@@ -1,3 +1,11 @@
+import os
+
+UPLOAD_FOLDER = "uploads"
+
+# Create folder if it doesn't exist
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
 # app.py
 import streamlit as st
 from tensorflow.keras.models import load_model
