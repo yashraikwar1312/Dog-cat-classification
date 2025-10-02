@@ -103,3 +103,18 @@ if uploaded_file is not None:
     else:
         st.success(f"Prediction: Cat 🐱 ({(1-pred_prob)*100:.2f}% confidence)")
         st.snow()
+        import tensorflow as tf
+from tensorflow.keras.models import load_model
+from tensorflow.keras import layers
+
+model = load_model(
+    'cat_dog_classifier.h5',
+    custom_objects={
+        'Functional': tf.keras.Model,
+        'Sequential': tf.keras.Sequential,
+        'RandomFlip': layers.RandomFlip,
+        'RandomRotation': layers.RandomRotation,
+        'RandomZoom': layers.RandomZoom
+    }
+)
+
